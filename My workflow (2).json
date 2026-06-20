@@ -1,0 +1,162 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Eyal Sabuke Suites Guests documentation ",
+        "formDescription": "input details below",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Guest name"
+            },
+            {
+              "fieldLabel": "nationality",
+              "placeholder": "nigerian"
+            },
+            {
+              "fieldLabel": "Place of birth "
+            },
+            {
+              "fieldLabel": "permanent address in full"
+            },
+            {
+              "fieldLabel": "Occupation"
+            },
+            {
+              "fieldLabel": "Date of Arrival"
+            },
+            {
+              "fieldLabel": "Date of Departure"
+            },
+            {
+              "fieldLabel": "Departing to"
+            },
+            {
+              "fieldLabel": "Nature of visit"
+            },
+            {
+              "fieldLabel": "GSM number ",
+              "fieldType": "number"
+            },
+            {
+              "fieldLabel": "Name of next of kin"
+            },
+            {
+              "fieldLabel": "Gsm number of next of kin",
+              "fieldType": "number"
+            },
+            {
+              "fieldLabel": "number of guest",
+              "fieldType": "number"
+            },
+            {
+              "fieldLabel": "Room number ",
+              "fieldType": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6a0350a1-2318-4e46-8176-82ba29591e87",
+      "name": "On form submission",
+      "webhookId": "2c1d8cd9-b042-46b9-a194-b11f68649093"
+    },
+    {
+      "parameters": {
+        "name": "guest documentation",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "10nd6IJcw9wcXYqQbM21iV5cSEE5P0zUXkeZS3LnE0xJAWmyr8TEsWII2b7O178601xqj46AW",
+          "mode": "list",
+          "cachedResultName": "Classroom",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/10nd6IJcw9wcXYqQbM21iV5cSEE5P0zUXkeZS3LnE0xJAWmyr8TEsWII2b7O178601xqj46AW"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        432,
+        -16
+      ],
+      "id": "eee0a507-b5ba-4886-b8e4-665b2b043b6d",
+      "name": "Upload file",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "rtROHTN1ncOY9ZQs",
+          "name": "Google Drive OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "xlsx",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "e7c7a815-dbb1-49bb-bccf-7695ca914f39",
+      "name": "Convert to File"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "744cb197-8f72-4b4e-b4e0-4e12c9cd8846",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a10595b0e55c206f135496e926256e532bc4fc81ab91a6bbb79db0b62098ce33"
+  },
+  "nodeGroups": [],
+  "id": "d3WuKCqzdyYpt4Le",
+  "tags": []
+}
